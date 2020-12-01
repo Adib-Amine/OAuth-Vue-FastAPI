@@ -6,13 +6,17 @@ const MyPlugin = {
         data: {
             isAuthenticated : false,
             access_token : null,
-            token_type : 'bearer'
-            // msg : 'hello amine'
+            token_type : 'bearer',
+            config : {
+              headers: {
+                  'content-type': 'application/x-www-form-urlencoded'
+              }
+            },
         },
         methods : {
-          // testMethod(){
-          //   return this.msg
-          // }
+          getBearer(){
+            return {  headers: {'Authorization': `Bearer ${this.access_token}`}}
+          }
         }
       })
       // Vue.prototype.$myVar = () => {

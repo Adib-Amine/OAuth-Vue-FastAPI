@@ -13,7 +13,7 @@ from jose import jwt
 SECRET_KEY = "e505bf8963e5fd764c36f4f36d14af7c30e9f4f1b9851c9851b29f5043b82613"
 # SECRET_KEY = "amine"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ACCESS_TOKEN_EXPIRE_MINUTES = 60
 access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")

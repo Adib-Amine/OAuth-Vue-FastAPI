@@ -51,11 +51,6 @@ export default {
             isAlertShow: false,
             error : false,
             errorMessage : null,
-            config : {
-                headers: {
-                    'content-type': 'application/x-www-form-urlencoded'
-                }
-            },
             requestBody : {
                 username : null,
                 password : null
@@ -90,7 +85,7 @@ export default {
         },
         async gettoken(){
             try {
-                const res = await axios.post("http://localhost:8000/token",qs.stringify(this.requestBody),this.config)
+                const res = await axios.post("http://localhost:8000/token",qs.stringify(this.requestBody),this.$myauth.config)
                 return res
             } catch (err) {
                 return err.response

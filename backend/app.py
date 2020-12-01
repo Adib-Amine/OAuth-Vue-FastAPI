@@ -1,8 +1,9 @@
+from operator import mod
 from fastapi import Depends, FastAPI ,Request, Response
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
 from jose import JWTError, jwt
-from shema import User ,Token, TokenData
+from shema import User ,Token, TokenData,Item
 from db import engine,SessionLocal
 from sqlalchemy.orm import Session
 import uvicorn
@@ -67,21 +68,19 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     return {"access_token": access_token, "token_type": "bearer"}
 
 
-
-@app.get("/users/me", response_model=User)
+@app.get("/user/me", response_model=User)
 async def read_users_me(current_user: User = Depends(get_current_user)):
     #We want to get the current_user .
     return current_user
 
+@app.get("/user/items")
+async def get_items_user(current_user : User = Depends(get_current_user),db: Session = Depends(get_db)):
+    return db.query(models.Item).filter(models.Item.userId == current_user.id).all()
+
+
 @app.get('/users')
 async def get_all_users(db: Session = Depends(get_db)):
     return db.query(models.User).all()
-
-# @app.get('/users/{username}')
-# async def get_users(username : str,db: Session = Depends(get_db)):
-#     return authenticate_user(db,username=username,password='amine')
-    
-
 
 
 if __name__ == '__main__':
