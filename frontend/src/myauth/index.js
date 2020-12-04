@@ -7,6 +7,7 @@ const MyPlugin = {
             isAuthenticated : false,
             access_token : null,
             token_type : 'bearer',
+            user_type : '',
             config : {
               headers: {
                   'content-type': 'application/x-www-form-urlencoded'

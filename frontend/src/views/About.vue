@@ -45,6 +45,7 @@ import axios from 'axios'
     },
     mounted(){
       this.fetchItems()
+      this.test()
     }
   }
 </script>
