@@ -4,11 +4,15 @@
               <h1>Home</h1>
           </div>
           <div>
+            <hr>
             Admin : amine
-            password : admine
+            <br>
+            password : amine
           </div>
           <div>
+            <hr>
             Client : adib
+            <br>
             password : adib
           </div>  
         </div>
